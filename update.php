@@ -6,12 +6,13 @@ $db->query("CREATE TABLE IF NOT EXISTS links (
 	url      text PRIMARY KEY,
 	desc     text,
 	added_on integer,
-	read_on  integer
+	read_on  integer,
+	tags     text
 )");
 
 
-$stmt = $db->prepare("insert INTO links ( url,  desc,  added_on)
-                             VALUES     (:url, :desc, :added_on)");
+$stmt = $db->prepare("insert INTO links ( url,  desc,  added_on, tags)
+                             VALUES     (:url, :desc, :added_on, :tags)");
 
 // loop over every executable in gatherers/
 $gatherers = new DirectoryIterator(dirname(__FILE__) . '/gatherers');
@@ -24,10 +25,11 @@ foreach ($gatherers as $file) {
 		exec($file->getPathname(), $out);
 		foreach ($out as $entry) {
 			echo $entry . "\n";
-			$parts = explode("\t", $entry);
+			$parts = explode("\t", $entry, 4);
 			$stmt->bindValue(":url",      $parts[0]);
 			$stmt->bindValue(":desc",     $parts[1]);
 			$stmt->bindValue(":added_on", $parts[2]);
+			$stmt->bindValue(":tags",     $parts[3]);
 			$stmt->execute();
 		}
 	}

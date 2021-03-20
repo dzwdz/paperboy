@@ -1,6 +1,7 @@
 #!/usr/bin/env -S php -q
 <?php
-$db = new SQLite3('paperboy.db');
+$dbpath = dirname(realpath(__FILE__)) . '/paperboy.db';
+$db = new SQLite3($dbpath);
 
 $db->query("CREATE TABLE IF NOT EXISTS links (
 	url      text PRIMARY KEY,

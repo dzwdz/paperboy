@@ -58,7 +58,16 @@ if (isset($_GET['add'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>paperboy</title>
 
-	<link rel="stylesheet" href="style.css">
+	<style>
+body {
+	margin: 2rem;
+}
+
+h1 {
+	font-size: 1rem;
+	display: inline;
+}
+	</style>
 </head>
 <body>
 

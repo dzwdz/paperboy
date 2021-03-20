@@ -11,8 +11,8 @@ $db->query("CREATE TABLE IF NOT EXISTS links (
 )");
 
 
-$stmt = $db->prepare("insert INTO links ( url,  desc,  added_on, tags)
-                             VALUES     (:url, :desc, :added_on, :tags)");
+$stmt = $db->prepare("INSERT OR REPLACE INTO links ( url,  desc,  added_on, tags)
+                                        VALUES     (:url, :desc, :added_on, :tags)");
 
 // loop over every executable in gatherers/
 $gatherers = new DirectoryIterator(dirname(__FILE__) . '/gatherers');

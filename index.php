@@ -1,5 +1,5 @@
 <?php
-$dbpath = dirname(realpath(__FILE__)) . '/../paperboy.db';
+$dbpath = dirname(realpath(__FILE__)) . '/paperboy.db';
 $db = new SQLite3($dbpath);
 
 

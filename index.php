@@ -75,7 +75,7 @@ h1 {
 	<h1>paperboy</h1>
 	<nav>
 <?php if(isset($_GET['archive'])) { ?>
-		<a href="/">go back</a>
+		<a href="?">go back</a>
 <?php } else { ?>
 		<a href="?archive">archive</a>
 <?php } ?>

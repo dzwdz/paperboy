@@ -78,7 +78,7 @@ if (isset($_GET['add'])) {
 
 if (isset($_GET['archive'])) {
     $res = $db->query("SELECT url, desc, read_on, tags FROM links
-                       WHERE read_on IS NOT NULL ORDER BY added_on DESC");
+                       WHERE read_on IS NOT NULL ORDER BY read_on DESC");
 } else {
     $res = $db->query("SELECT url, desc, read_on, tags FROM links
                        WHERE read_on IS NULL ORDER BY added_on DESC");

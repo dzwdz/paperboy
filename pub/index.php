@@ -1,5 +1,6 @@
 <?php
-$db = new SQLite3('../paperboy.db');
+$dbpath = dirname(realpath(__FILE__)) . '/../paperboy.db';
+$db = new SQLite3($dbpath);
 
 
 function redirect_back($default) {

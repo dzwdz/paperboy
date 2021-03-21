@@ -12,7 +12,7 @@ $db->query("CREATE TABLE IF NOT EXISTS links (
 )");
 
 
-$stmt = $db->prepare("INSERT OR REPLACE INTO links ( url,  desc,  added_on, tags)
+$stmt = $db->prepare("INSERT OR IGNORE INTO links ( url,  desc,  added_on, tags)
                                         VALUES     (:url, :desc, :added_on, :tags)");
 
 // loop over every executable in gatherers/

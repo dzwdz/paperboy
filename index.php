@@ -1,4 +1,5 @@
 <?php
+$basepath = "/paperboy.php";
 $dbpath = dirname(realpath(__FILE__)) . '/paperboy.db';
 $db = new SQLite3($dbpath);
 
@@ -27,14 +28,14 @@ if (isset($_GET['mark'])) {
 	$stmt->bindValue(":url", urldecode($_GET['mark']));
 	$stmt->bindValue(":ts", time());
 	$stmt->execute();
-	redirect_back("/");
+	redirect_back($basepath);
 }
 
 if (isset($_GET['unmark'])) {
 	$stmt = $db->prepare("UPDATE links SET read_on = NULL WHERE url = :url ");
 	$stmt->bindValue(":url", urldecode($_GET['unmark']));
 	$stmt->execute();
-	redirect_back("/?archive");
+	redirect_back($basepath . "?archive");
 }
 
 
@@ -47,7 +48,7 @@ if (isset($_GET['add'])) {
 	$stmt->bindValue(":tags", "manual");
 	$stmt->execute();
 
-	redirect_back("/");
+	redirect_back($basepath);
 }
 ?>
 
